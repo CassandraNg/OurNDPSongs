@@ -10,39 +10,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:text="@string/recipeName"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/etRName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_title" />
+        android:hint="@string/hint_recipeName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/singers"
+        android:text="@string/recipe"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/etSingers"
+        android:id="@+id/etRecipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_singers" />
+        android:hint="@string/hint_recipe" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/year"
+        android:text="@string/minutes"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/etYear"
+        android:id="@+id/etMin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_year" />
+        android:hint="@string/hint_minutes" />
 
 
     <TextView
@@ -51,44 +51,13 @@
         android:text="@string/stars"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <RadioGroup
-        android:id="@+id/rgStars"
+    <RatingBar
+        android:id="@+id/rBarStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/one" />
-
-        <RadioButton
-            android:id="@+id/radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/two" />
-
-        <RadioButton
-            android:id="@+id/radio3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/three" />
-
-        <RadioButton
-            android:id="@+id/radio4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/four" />
-
-        <RadioButton
-            android:id="@+id/radio5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/five" />
-
-    </RadioGroup>
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"

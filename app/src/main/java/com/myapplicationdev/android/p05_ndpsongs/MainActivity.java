@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etTitle, etSingers, etYear;
+    EditText etRName, etRecipe, etMin;
     Button btnInsert, btnShowList;
-    RadioGroup rg;
+    RatingBar rBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,31 +23,31 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle(getTitle().toString() + " ~ " + getResources().getText(R.string.title_activity_main));
 
-        etTitle = (EditText) findViewById(R.id.etTitle);
-        etSingers = (EditText) findViewById(R.id.etSingers);
-        etYear = (EditText) findViewById(R.id.etYear);
+        etRName = (EditText) findViewById(R.id.etRName);
+        etRecipe = (EditText) findViewById(R.id.etRecipe);
+        etMin = (EditText) findViewById(R.id.etMin);
         btnInsert = (Button) findViewById(R.id.btnInsertSong);
         btnShowList = (Button) findViewById(R.id.btnShowList);
-        rg = (RadioGroup) findViewById(R.id.rgStars);
+        rBar = (RatingBar) findViewById(R.id.rBarStar);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String title = etTitle.getText().toString().trim();
-                String singers = etSingers.getText().toString().trim();
+                String title = etRName.getText().toString().trim();
+                String singers = etRecipe.getText().toString().trim();
                 if (title.length() == 0 || singers.length() == 0){
                     Toast.makeText(MainActivity.this, "Incomplete data", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                String year_str = etYear.getText().toString().trim();
+                String year_str = etMin.getText().toString().trim();
                 int year = 0;
                 try {
                     year = Integer.valueOf(year_str);
                 } catch (Exception e){
-                    Toast.makeText(MainActivity.this, "Invalid year", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Invalid time", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 dbh.close();
                 Toast.makeText(MainActivity.this, "Inserted", Toast.LENGTH_LONG).show();
 
-                etTitle.setText("");
-                etSingers.setText("");
-                etYear.setText("");
+                etRName.setText("");
+                etRecipe.setText("");
+                etMin.setText("");
 
             }
         });
@@ -77,24 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private int getStars() {
-        int stars = 1;
-        switch (rg.getCheckedRadioButtonId()) {
-            case R.id.radio1:
-                stars = 1;
-                break;
-            case R.id.radio2:
-                stars = 2;
-                break;
-            case R.id.radio3:
-                stars = 3;
-                break;
-            case R.id.radio4:
-                stars = 4;
-                break;
-            case R.id.radio5:
-                stars = 5;
-                break;
-        }
+        int stars = (int) rBar.getRating();
         return stars;
     }
 
